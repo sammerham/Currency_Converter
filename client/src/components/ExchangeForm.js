@@ -7,23 +7,38 @@ import CurrenciesContext from '../currenciesContext';
 import Container from 'react-bootstrap/Container'
 import Stack from 'react-bootstrap/Stack'
 
+/*
+ * ExchangeForm
+ *
+ * This is the page where you rednder the form for exchange currencies
+ * State: formData : 
+                        {
+                          from: '',
+                          to: '',
+                          amount: '',
+                        }
+ *        
+ * props: none
+ * App ---->> ExchangeForm
+ */
 
-const INITIAL_DATA = {
-  from: '',
-  to: '',
-  amount: '',
-}
 function ExchangeForm() {
-  
+  const INITIAL_DATA = {
+    from: '',
+    to: '',
+    amount: '',
+  }
+
   const {
     currencies,
-    convertCurrencies,
+    setData,
     resultAmount,
     resetResults
   } = useContext(CurrenciesContext);
+
   const [formData, setFormData] = useState(INITIAL_DATA);
 
-  console.log('formData', formData)
+
   // handle change for form inputs;
   const handleChange = e => {
     const { name, value } = e.target;
@@ -36,7 +51,7 @@ function ExchangeForm() {
   // handle submit takes form input and calls API to exchange amounts;
   const handleSubmit = e => {
     e.preventDefault();
-    convertCurrencies(formData);
+    setData(formData);
   };
  
   // handleResetresetResults -> clear form data initial state
@@ -65,7 +80,7 @@ function ExchangeForm() {
               required
               onChange={handleChange}
             >
-              <option>Currency</option>
+              <option value="">Currency</option>
               {currencies.map(c => <option value={c} key={c}>{c}</option>)}
             </Form.Select>
           </Form.Group>
@@ -96,7 +111,7 @@ function ExchangeForm() {
               required
               onChange={handleChange}
             >
-              <option>Currency</option>
+              <option value="">Currency</option>
               {currencies.map(c => <option value={c} key={c}>{c}</option>)}
             </Form.Select>
           </Form.Group>
@@ -119,7 +134,8 @@ function ExchangeForm() {
         <Stack direction="horizontal" gap={3}>
           <Button
             variant="primary"
-            onClick={handleSubmit}>
+            onClick={handleSubmit}
+          >
             Convert
           </Button>
           <Button
