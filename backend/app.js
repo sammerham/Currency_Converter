@@ -3,6 +3,8 @@
 const express = require("express");
 const app = express();
 
+// environment variables
+require('dotenv').config()
 
 const currenciesRoutes = require('./routes/currencies');
 const convertRoutes = require('./routes/exchange');

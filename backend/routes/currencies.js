@@ -3,16 +3,15 @@ const express = require("express");
 const axios = require("axios");
 const router = express.Router();
 const URL = 'https://data.fixer.io/api/';
-
+const ACCESS_KEY = process.env.API_KEY;
 const BASE_CURRENCIES = ['EUR', 'USD', 'GBP', 'CAD'];
-
 /* GET
 [
-    { "name": "Euro", "symbol": "EUR" },
-    { "name": "United States Dollar", "symbol": "USD" },
-    { "name": "British Pound Sterling", "symbol": "GBP" },
-    { "name": "Canadian Dollar", "symbol": "CAD" }
-  ] */
+  { "name": "Euro", "symbol": "EUR" },
+  { "name": "United States Dollar", "symbol": "USD" },
+  { "name": "British Pound Sterling", "symbol": "GBP" },
+  { "name": "Canadian Dollar", "symbol": "CAD" }
+] */
 
 router.get("/", async (req, res, next) => {
   try {
