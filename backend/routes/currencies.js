@@ -3,7 +3,7 @@ const express = require("express");
 const axios = require("axios");
 const router = express.Router();
 const URL = 'https://data.fixer.io/api/';
-const ACCESS_KEY = '95f535137405845706c72acdb194efb8';
+
 const BASE_CURRENCIES = ['EUR', 'USD', 'GBP', 'CAD'];
 
 /* GET
