@@ -6,20 +6,20 @@ const URL = 'https://data.fixer.io/api/';
 const ACCESS_KEY = '95f535137405845706c72acdb194efb8';
 const BASE_CURRENCIES = ['EUR', 'USD', 'GBP', 'CAD'];
 
-/* GET 
+/* GET
 [
-  { "name": "Euro", "symbol": "EUR" },
-  { "name": "Dollar", "symbol": "USD" },
-  { "name": "Pound sterling", "symbol": "GPB" },
-  { "name": "Canadian Dollar", "symbol": "CAD" }
-] */
+    { "name": "Euro", "symbol": "EUR" },
+    { "name": "United States Dollar", "symbol": "USD" },
+    { "name": "British Pound Sterling", "symbol": "GBP" },
+    { "name": "Canadian Dollar", "symbol": "CAD" }
+  ] */
 
 router.get("/", async (req, res, next) => {
   try {
     const response = await axios.get(`${URL}symbols?access_key=${ACCESS_KEY}`);
     const { symbols } = response.data;
     const currencies = BASE_CURRENCIES.map(curr => ({ name: symbols[curr], symbol: curr }));
-    res.json(currencies);
+    res.status(200).json(currencies);
   }
   catch (err) {
     next(err);

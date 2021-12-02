@@ -28,7 +28,8 @@ router.post("/", async (req, res, next) => {
     );
     const { query, result } = response.data;
     const data = { ...query, amount_exchanged: result };
-    return res.json(data);
+    return res.status(200).json(data);
+      
   }
   catch (err) {
     next(err);
