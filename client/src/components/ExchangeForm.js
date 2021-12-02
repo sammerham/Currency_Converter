@@ -1,5 +1,12 @@
-import { React, useState, useContext } from 'react'
+import { React, useState, useContext } from 'react';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 import CurrenciesContext from '../currenciesContext';
+import Container from 'react-bootstrap/Container'
+import Stack from 'react-bootstrap/Stack'
+
 
 const INITIAL_DATA = {
   from: '',
@@ -16,7 +23,7 @@ function ExchangeForm() {
   } = useContext(CurrenciesContext);
   const [formData, setFormData] = useState(INITIAL_DATA);
 
-  
+  console.log('formData', formData)
   // handle change for form inputs;
   const handleChange = e => {
     const { name, value } = e.target;
@@ -39,65 +46,92 @@ function ExchangeForm() {
   }
 
   return (
-    <div>
-      <h3>Dash Currency Exchange</h3>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="from">From</label>
+    <Container className="d-inline-block ">
+      <Row className="mt-5" xs={1} md={2}>
+        <Col >
+          <h2>Dash Currency Exchange</h2>
+        </Col>
+      </Row>
+
+      <Form onSubmit={handleSubmit} className="mt-4">
+        
+        <Row className="mb-3" xs={2} md={4} lg={6}>
+          <Form.Group as={Col}>
+            <Form.Label htmlFor="from">From</Form.Label>
+            <Form.Select
+              name="from"
+              id="from"
+              value={formData.from}
+              required
+              onChange={handleChange}
+            >
+              <option>Currency</option>
+              {currencies.map(c => <option value={c} key={c}>{c}</option>)}
+            </Form.Select>
+          </Form.Group>
+
+          <Form.Group as={Col}>
+            <Form.Control
+              required
+              type="number"
+              min="1"
+              id="amount"
+              name="amount"
+              value={formData.amount}
+              placeholder="amount"
+              onChange={handleChange}
+              style={{marginTop:32}}
+            />
+          </Form.Group>
+        </Row>
+
+        <Row className="mb-3" xs={2} md={4} lg={6}>
+          <Form.Group as={Col}>
+            <Form.Label htmlFor="to">To</Form.Label>
+            <br />
+            <Form.Select
+              name="to"
+              id="to"
+              value={formData.to}
+              required
+              onChange={handleChange}
+            >
+              <option>Currency</option>
+              {currencies.map(c => <option value={c} key={c}>{c}</option>)}
+            </Form.Select>
+          </Form.Group>
+          
+          <Form.Group as={Col}>
+            <br />
+            <Form.Control
+              required
+              type="result"
+              min="0"
+              id="result"
+              name="result"
+              defaultValue={resultAmount}
+              placeholder="Converted amount"
+              style={{ marginTop: 8 }}
+            />
+          </Form.Group>
+        </Row>
         <br />
-        <select
-          name="from"
-          id="from"
-          value={formData.from}
-          required
-          onChange={handleChange}
-        >
-          <option>Currency</option>
-          {currencies.map(c => <option value={c} key={c}>{c}</option>)}
-        </select>
-        <br />
-        <label htmlFor="amount"></label>
-        <input
-          required
-          type="number"
-          min="1"
-          id="amount"
-          name="amount"
-          value={formData.amount}
-          placeholder="amount"
-          onChange={handleChange}
-        />
-        <br />
-        <br />
-        <label htmlFor="to">To</label>
-        <br />
-        <select
-          name="to"
-          id="to"
-          value={formData.to}
-          required
-          onChange={handleChange}
-        >
-          <option>Currency</option>
-          {currencies.map(c => <option value={c} key={c}>{c}</option>)}
-        </select>
-        <br />
-        <label htmlFor="result"></label>
-        <input
-          required
-          type="result"
-          min="0"
-          id="result"
-          name="result"
-          defaultValue={resultAmount}
-          placeholder="result"
-          // onChange={handleChange}
-        />
-        <br />
-        <button onClick={handleSubmit}>Convert</button>
-        <button onClick={handleReset}>Reset</button>
-      </form>
-    </div>
+        <Stack direction="horizontal" gap={3}>
+          <Button
+            variant="primary"
+            onClick={handleSubmit}>
+            Convert
+          </Button>
+          <Button
+            variant="outline-danger"
+            onClick={handleReset} >
+            Reset
+          </Button>
+        </Stack >
+      </Form>
+    </Container>
   )
 }
 
 export default ExchangeForm
+

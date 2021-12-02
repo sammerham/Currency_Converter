@@ -3,11 +3,12 @@ import { React, useState, useEffect } from 'react';
 import ExchangeForm from './components/ExchangeForm';
 import CurrenciesContext from './currenciesContext';
 
-import './App.css';
+
 const URL = 'http://localhost:3000/'
 function App() {
   const [currencies, setCurrencies] = useState([]);
   const [resultAmount, setResultAmount] = useState('');
+
   // get available currencies from server on first render
   useEffect(() => {
     async function fetchCurrencies() {
