@@ -1,8 +1,8 @@
-Currency Converter
+# **Currency Converter**
 Small app for Currency Converter made with Express for backend and React for the frontend.
  
 
-BackEnd - Express
+## BackEnd - Express
 After you clone main app, cd backend and follow the following steps:
 
 1- Install dependencies:
@@ -14,7 +14,7 @@ $ npm start
 5- Change .envSample name into .env and add your API key inside it.
 
 
-Frontend  - React
+## Frontend  - React
 cd into client folder
 1- Install dependencies:
 $ npm install
