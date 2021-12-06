@@ -31,7 +31,6 @@ function App() {
       setCurrencies(data => availCurr);
     }
     fetchCurrencies();
-    return ()=> setCurrencies([])
   }, []);
   
 
