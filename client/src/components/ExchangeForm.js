@@ -119,6 +119,7 @@ function ExchangeForm() {
           <Form.Group as={Col}>
             <br />
             <Form.Control
+              className="ps-2"
               required
               type="result"
               min="0"
