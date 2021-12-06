@@ -48,13 +48,13 @@ function ExchangeForm() {
     }));
   };
 
-  // handle submit takes form input and calls API to exchange amounts;
+  // handle submit takes form input and set data in App, which triggers effect to call API for exchange.
   const handleSubmit = e => {
     e.preventDefault();
     setData(formData);
   };
  
-  // handleResetresetResults -> clear form data initial state
+  // handleResetresetResults -> clear form data to initial state and results to ""
   const handleReset = () => {
     setFormData(INITIAL_DATA);
     resetResults();
