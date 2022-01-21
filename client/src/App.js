@@ -2,7 +2,7 @@ import axios from 'axios';
 import { React, useState, useEffect } from 'react';
 import ExchangeForm from './components/ExchangeForm';
 import CurrenciesContext from './currenciesContext';
-const URL = 'http://localhost:3000/'
+const URL = 'http://localhost:3001/'
 
 /** App
  *
