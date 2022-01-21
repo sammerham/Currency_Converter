@@ -1,7 +1,7 @@
 'use strict'
 const express = require("express");
 const axios = require("axios");
-const router = express.Router();
+const router = new express.Router();
 const URL = 'https://data.fixer.io/api/';
 const ACCESS_KEY = process.env.API_KEY;
 const BASE_CURRENCIES = ['EUR', 'USD', 'GBP', 'CAD'];
