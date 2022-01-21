@@ -1,4 +1,3 @@
-/** Simple Hello Word Express app. */
 
 const express = require("express");
 const app = express();
@@ -26,7 +25,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-//!*************Roues******************
+//!*************Routes******************
 app.use('/currencies', currenciesRoutes);
 app.use('/exchange', convertRoutes)
 
